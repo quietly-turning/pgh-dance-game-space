@@ -34,8 +34,14 @@ function App(){
 	useEffect(() => {
     // check for presence of image carousels in current page on each url change
     initImgCarousels()
+    hideMobileNav()
   }, [location.pathname]);
 
+
+  function hideMobileNav(){
+    const topNavbarClasses = document.getElementById('navbarNav')?.classList
+		topNavbarClasses.remove('show')
+  }
 
 
   const initImgCarousels = () => {
@@ -83,7 +89,7 @@ function App(){
               </Routes>
             </div>
 
-            <TableOfContents mobile_nav={mobileNav} />
+            <TableOfContents />
           </div>
         </div>
       </div>

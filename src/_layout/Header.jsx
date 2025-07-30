@@ -10,10 +10,6 @@ class Header extends Component {
 		this.handleMobileNavToggle = this.handleMobileNavToggle.bind(this)
 		this.hideMobileNav         = this.hideMobileNav.bind(this)
 		this.showMobileNav         = this.showMobileNav.bind(this)
-
-		this.state = {
-			mobile_nav: false,
-		}
 	}
 
 	// once this Header component loads, retrieve 'bsTheme' from localStorage
@@ -24,18 +20,17 @@ class Header extends Component {
 	}
 
 	handleMobileNavToggle(){
-		this.state.mobile_nav ?	this.hideMobileNav() : this.showMobileNav()
+		const mobileNavOpen = Array.from(document.getElementById('navbarNav')?.classList).includes('show')
+		mobileNavOpen ?	this.hideMobileNav() : this.showMobileNav()
 	}
 
 	showMobileNav(){
-		this.setState({mobile_nav: true})
-		const topNavbarClasses    = document.getElementById('navbarNav')?.classList
+		const topNavbarClasses = document.getElementById('navbarNav')?.classList
 		topNavbarClasses.add('show')
 	}
 
 	hideMobileNav(){
-		this.setState({mobile_nav: false})
-		const topNavbarClasses    = document.getElementById('navbarNav')?.classList
+		const topNavbarClasses = document.getElementById('navbarNav')?.classList
 		topNavbarClasses.remove('show')
 	}
 
