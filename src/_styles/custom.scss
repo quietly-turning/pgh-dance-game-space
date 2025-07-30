@@ -356,8 +356,16 @@ a.joinDiscordBtn{
 	}
 }
 
-.tns-lazy-img {
-	opacity: 1;
+.tns-item{
+	display: grid;
+	justify-items: center;
+
+	.tns-lazy-img {
+		opacity: 1;
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+	}
 }
 
 #events{
