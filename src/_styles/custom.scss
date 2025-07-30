@@ -11,7 +11,7 @@
 // general elements
 
 html, body{
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 h1{
@@ -412,7 +412,7 @@ a.joinDiscordBtn{
 		margin: 1em 0em;
 	}
 
-	img, iframe{
+	img, iframe, object{
 		margin: 1em 0em;
 	}
 }
