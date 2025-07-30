@@ -9,7 +9,7 @@ import content from "./page-content.js"
 function Page(){
   let location = useLocation()
 
-
+  
   const transform = function(node){
     if (node.type==="tag"){
     // transform internal <a data-component="Link"> elements to react <Link> elements
@@ -22,7 +22,7 @@ function Page(){
 
   // on url change
   useEffect(() => {
-    
+
     // scroll to top
     window.scrollTo({
       top: 0,
