@@ -1,6 +1,6 @@
 // ------- components for React
-import { Component }     from "react"
-import { Route, Routes } from "react-router"
+import { useEffect, useState } from "react"
+import { Route, Routes, useLocation } from "react-router"
 
 // withRouter allows us access to app url history
 // and, more importantly here, hook events into url changes
@@ -23,74 +23,73 @@ import Page   from "./Page"
 
 
 
-class App extends Component {
+function App(){
 
-	constructor(props) {
-		super(props)
+  const [mobileNav, setMobileNav] = useState(false);
+  const [ToC, setToC] = useState()
 
-		this.setToC = this.setToC.bind(this)
+  const slider = {}
+  const location = useLocation();
 
-		this.state = {
-			mobile_nav: false,
-			isAPILoaded: false,
-		}
+	useEffect(() => {
+    console.log('Location changed!', location.pathname);
+    processImgCarousels()
+  }, [location]);
 
-		this.slider = {}
-	}
 
-	componentDidMount() {
-		Array.from(document.getElementsByClassName('tns-slider')).forEach(sliderEl=>{
-			const id = sliderEl.id.replace("-carousel","")
 
-			this.slider[id] = tns({
-				container: `#${id}-carousel`,
-				items: 1,
-				autoplay: false,
-				arrowKeys: true,
-				loop: false,
-				lazyload: true,
-				speed: 0,
-				nav: false,
-			});
+  const processImgCarousels = () => {
 
-			Array.from(document.getElementsByClassName(`${id}-thumbnail`)).forEach(thumb=>{
-				thumb.addEventListener("click", e=>{
-					this.slider[id].goTo( parseInt(thumb.dataset.tnsIndex) )
-				})
-			})
-		});
-	}
+    Array.from(document.getElementsByClassName("tns-slider")).forEach(sliderEl=>{
+      const id = sliderEl.id.replace("-carousel","")
 
-	setToC(data){
-		this.setState({toc: data})
-	}
+      slider[id] = tns({
+        container: `#${id}-carousel`,
+        items: 1,
+        autoplay: false,
+        arrowKeys: true,
+        loop: false,
+        lazyload: true,
+        speed: 0,
+        nav: false,
+      });
 
-	render() {
+      Array.from(document.getElementsByClassName(`${id}-thumbnail`)).forEach(thumb=>{
+        thumb.addEventListener("click", e=>{
+          slider[id].goTo( parseInt(thumb.dataset.tnsIndex) )
+        })
+      })
+    });
 
-		return (
-			<main>
-				<Header />
+    // Array.from(document.getElementsByClassName("tns-lazy-img")).forEach(lazyImg=>{
+    // 	console.log(lazyImg.parentElement)
+    // })
+  }
 
-				<div className="mt-5">
-					<div className="row no-gutters">
 
-						<div id="content-container" className="d-block d-lg-flex justify-content-center">
-							<div id="content" className="col-lg-9 col-md-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4">
-								<Routes>
-									<Route path="/"      element={<Page   hideMobileNav={this.hideMobileNav} />} />
-									<Route path="/:page" element={<Page   hideMobileNav={this.hideMobileNav} setToC={this.setToC} />} />
-									<Route path="/:group/:page" element={<Page   hideMobileNav={this.hideMobileNav} setToC={this.setToC} />} />
-								</Routes>
-							</div>
 
-							<TableOfContents toc={this.state.toc} mobile_nav={this.state.mobile_nav} />
-						</div>
-					</div>
-				</div>
+  return (
+    <main>
+      <Header />
 
-			</main>
-		);
-	}
+      <div className="mt-5">
+        <div className="row no-gutters">
+
+          <div id="content-container" className="d-block d-lg-flex justify-content-center">
+            <div id="content" className="col-lg-9 col-md-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4">
+              <Routes>
+                <Route path="/"      element={<Page />} />
+                <Route path="/:page" element={<Page setToC={setToC} />} />
+              </Routes>
+            </div>
+
+            <TableOfContents ToC={ToC} mobile_nav={mobileNav} />
+          </div>
+        </div>
+      </div>
+
+    </main>
+  );
 }
 
 export default withRouter(App);

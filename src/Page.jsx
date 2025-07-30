@@ -1,16 +1,14 @@
-import { useEffect }  from "react"
+import { useEffect, useState }  from "react"
 import { Link, useLocation } from "react-router"
 
 //  html-react-parse for parsing strings containing HTML markup into react objects
 import parse from 'html-react-parser'
 
-// jQuery for parsing strings containing HTML markup into HTML objects
-import $ from "jquery"
-
 import content from "./page-content.js"
 
-function Page(props){
+function Page({setToC}){
 	let location = useLocation()
+
 
 	const transform = function(node){
 		if (node.type==="tag"){
@@ -32,8 +30,8 @@ function Page(props){
 			behavior: "instant"
 		})
 
-		// parse the string for this into an HTML object
-		const html = $.parseHTML(content[location.pathname])
+
+
 		// get all <h2> elements in this page and transform into a Table of Content
 		// for right-side-of-page navigation
 		const tocData = Array.from(document.getElementsByClassName("event-group")).map(eventGroup=>{
@@ -51,15 +49,10 @@ function Page(props){
 			}
 		})
 
-
-		// ).find(html).prevObject).map(v =>{
-		// 	console.log(v)
-		// 	const header = $(v)
-		// 	return {text: header.text(), id: header.attr('id')}
-		// })
-
-		// if a guide page, set the Table of Contents
-		if (props.setToC) { props.setToC( tocData ) }
+		// if a page has h2 and h3 elements, set the Table of Contents
+		if (tocData.length > 0) {
+			setToC( tocData )
+		}
 
 	}, [location.pathname]) // only re-render if url's path changes
 

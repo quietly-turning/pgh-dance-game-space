@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router"
 
 
-function TableOfContents(props){
+function TableOfContents({ToC}){
 
   function listItems(list){
     return list?.map((listItem, i)=>{
@@ -18,7 +18,7 @@ function TableOfContents(props){
 
 
   const el = () => {
-    if (props.toc?.length <= 0){
+    if (ToC?.length <= 0){
       return
     }
 
@@ -26,7 +26,7 @@ function TableOfContents(props){
       <div id="toc-container" className="bd-toc col-lg-2 me-2 d-lg-block d-none">
         <strong className="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
         <ul id="TableOfContents">
-          {listItems(props.toc)}
+          {listItems(ToC)}
         </ul>
       </div>
     )
