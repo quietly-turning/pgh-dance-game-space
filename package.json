@@ -1,0 +1,37 @@
+{
+  "name": "pgh-dance-game-space",
+  "version": "1",
+  "private": true,
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5",
+    "gh-pages": "^6.3.0",
+    "html-react-parser": "^5.2.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.5.2",
+    "tiny-slider": "^2.9.4",
+    "tiny-slider-react": "^0.5.7"
+  },
+  "scripts": {
+    "start": "npm run watch-local-changes | vite",
+    "build": "npm run convert-pages && sass src/_styles && vite build",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "convert-pages": "node src/html-to-json.js",
+    "watch-local-changes": "npm run convert-pages && chokidar \"src/Pages/**/*.html\" -c \"npm run convert-pages\" & sass --watch src/_styles/"
+  },
+  "homepage": "https://quietly-turning.github.io/pgh-dance-game-space/",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@vitejs/plugin-react": "^4.7.0",
+    "chokidar-cli": "^3.0.0",
+    "jquery": "^3.7.1",
+    "recursive-readdir": "^2.2.3",
+    "sass": "^1.87.0",
+    "vite": "^7.0.6"
+  }
+}
