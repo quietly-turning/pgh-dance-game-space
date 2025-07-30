@@ -81,8 +81,8 @@ function App(){
       <div className="mt-5">
         <div className="row no-gutters">
 
-          <div id="content-container" className="d-block d-lg-flex justify-content-center">
-            <div id="content" className="col-lg-9 col-md-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4">
+          <div id="content-container" className="d-flex justify-content-center">
+            <div id="content" className="col-lg-9 col-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4">
               <Routes>
                 <Route path="/"      element={<Page />} />
                 <Route path="/:page" element={<Page />} />
