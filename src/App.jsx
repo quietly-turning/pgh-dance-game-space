@@ -24,10 +24,6 @@ import Page   from "./Page"
 
 
 function App(){
-
-  const [mobileNav, setMobileNav] = useState(false);
-
-
   const slider = {}
   const location = useLocation();
 

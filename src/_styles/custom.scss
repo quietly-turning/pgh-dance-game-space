@@ -285,16 +285,29 @@ a.joinDiscordBtn{
 }
 
 .tns-item{
-	display: grid;
-	justify-items: center;
-
-	.tns-lazy-img {
+	// full-size images shown in modal
+	.tns-lazy-img{
 		opacity: 1;
-		height: 100%;
-		width: 100%;
-		object-fit: contain;
+		max-height: 90vh;
+		max-width:  95vw;
+		margin:  auto;
+		display: block;
 	}
 }
+
+.modal-content{
+	background-color: rgba(0,0,0,0.75);
+}
+
+img.thumbnail{
+	cursor: pointer;
+}	
+
+.tns-controls{
+	text-align: center;
+}
+
+
 
 #events{
 	h2{
@@ -343,12 +356,4 @@ a.joinDiscordBtn{
 	img, iframe, object{
 		margin: 1em 0em;
 	}
-}
-
-.modal-content{
-	background-color: rgba(0,0,0,0.9);
-}
-
-img.thumbnail{
-	cursor: pointer;
 }
