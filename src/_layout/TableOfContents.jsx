@@ -1,25 +1,52 @@
+import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 
+function TableOfContents(){
+  const [ToC, setToC] = useState()
 
-function TableOfContents({ToC}){
+  useEffect(() => {
+    setToC(null)
+    setToC(initToC())
+  }, [location.pathname])
 
   function listItems(list){
     return list?.map((listItem, i)=>{
 
-      return <li key={'section'+i}>
+      return(
+        <li key={'section'+i}>
           <a href={'#' + listItem.id}> {listItem.text}</a>
           <ul>
             { listItem.children ? listItems(listItem.children) : null }
           </ul>
         </li>
+      )
+    })
+  }
+
+  function initToC(){
+    // get all <h2> elements in this page and transform into a Table of Content
+    // for right-side-of-page navigation
+    return Array.from(document.getElementsByClassName("event-group")).map(eventGroup=>{
+      const groupEl = Array.from(eventGroup.getElementsByTagName("h2"))[0];
+      return {
+        text:     groupEl.innerText,
+        id:       groupEl.id,
+        children: Array.from(eventGroup.getElementsByClassName("event")).map(event=>{
+          const eventEl = Array.from(event.getElementsByTagName("h3"))[0];
+          return{
+            text: eventEl.innerText,
+            id:   eventEl.id,
+          }
+        })
+      }
     })
   }
 
 
-
   const el = () => {
-    if (ToC?.length <= 0){
-      return
+
+    if (!ToC || ToC.length <= 0){
+      return <div></div>
     }
 
     return (
@@ -34,8 +61,8 @@ function TableOfContents({ToC}){
 
   return (
     <Routes>
-      <Route path="/:group/:page" element={ el() } />
-      <Route path="/:page"        element={ el() } />
+      <Route path="/"      element={ el() } />
+      <Route path="/:page" element={ el() } />
     </Routes>
   )
 }

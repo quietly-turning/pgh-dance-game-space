@@ -26,19 +26,19 @@ import Page   from "./Page"
 function App(){
 
   const [mobileNav, setMobileNav] = useState(false);
-  const [ToC, setToC] = useState()
+
 
   const slider = {}
   const location = useLocation();
 
 	useEffect(() => {
-    console.log('Location changed!', location.pathname);
-    processImgCarousels()
-  }, [location]);
+    // check for presence of image carousels in current page on each url change
+    initImgCarousels()
+  }, [location.pathname]);
 
 
 
-  const processImgCarousels = () => {
+  const initImgCarousels = () => {
 
     Array.from(document.getElementsByClassName("tns-slider")).forEach(sliderEl=>{
       const id = sliderEl.id.replace("-carousel","")
@@ -79,11 +79,11 @@ function App(){
             <div id="content" className="col-lg-9 col-md-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4">
               <Routes>
                 <Route path="/"      element={<Page />} />
-                <Route path="/:page" element={<Page setToC={setToC} />} />
+                <Route path="/:page" element={<Page />} />
               </Routes>
             </div>
 
-            <TableOfContents ToC={ToC} mobile_nav={mobileNav} />
+            <TableOfContents mobile_nav={mobileNav} />
           </div>
         </div>
       </div>
