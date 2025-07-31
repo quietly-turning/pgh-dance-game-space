@@ -39,6 +39,23 @@ function App(){
 		topNavbarClasses.remove('show')
   }
 
+  function hideModal(id){
+    // change properties the modal div
+    const modalEl = document.getElementById((`${id}Modal`));
+    modalEl.classList.remove('show')
+    modalEl.style.display = "none"
+    modalEl.ariaHidden = true
+
+    // remove properties from <body>
+    document.body.classList.remove("modal-open")
+    document.body.style = ""
+
+    // remove <div class="modal-backdrop"> from DOM
+    Array.from(document.getElementsByClassName("modal-backdrop")).forEach(backdrop=>{
+      backdrop.remove()
+    })
+  }
+
 
   const initImgCarousels = () => {
 
@@ -56,16 +73,30 @@ function App(){
         nav: false,
       });
 
+      // allow user to click on any thumbnail to open the fullscreen modal to that specific img
       Array.from(document.getElementsByClassName(`${id}-thumbnail`)).forEach(thumb=>{
         thumb.addEventListener("click", e=>{
           slider[id].goTo( parseInt(thumb.dataset.tnsIndex) )
         })
       })
-    });
 
-    // Array.from(document.getElementsByClassName("tns-lazy-img")).forEach(lazyImg=>{
-    // 	console.log(lazyImg.parentElement)
-    // })
+      // allow user to click/tap any fullsize image to progress through the image slider
+      Array.from(sliderEl.children).forEach(fullImg=>{
+        fullImg.addEventListener("click", e=>{
+          const info = slider[id].getInfo()
+
+          if (info.index < info.slideCount-1){
+            // progress to the next img in this slider
+            slider[id].goTo("next")
+          } else{
+            // close the modal
+            // XXX: can't figure out how to use bootstrap's .hide()
+            //      so I'm recreating it manually
+            hideModal(id)
+          }
+        })
+      })
+    });
   }
 
 
