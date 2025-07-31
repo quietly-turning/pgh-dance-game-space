@@ -79,6 +79,75 @@ Please change the parent <Route path="${k}"> to <Route path="${k==="/"?"*":`${k}
     If you'd like to host an event at the PGH Dance Game Space,
     send <code>quietly_turning</code> a DM on Discord.
   </p>
+</div>`,"/":`<div id="home">
+  <h1>
+    PGH Dance Game Space
+  </h1>
+
+  <h2 id="About">About</h2>
+  <p>
+    The PGH Dance Game Space is a Pittsburgh-based community center for dance gamers and
+    dance-game-adjacent folk.
+  </p>
+  <p>
+    We get together twice a week to share freeplay dance games, board games, food, and
+    one another's company.
+  </p>
+
+  <p>
+    <img class="img-fluid" src="/img/homepage1.jpg" alt="three people playing dance games at the PGH Dance Game Space" />
+  </p>
+  <p>
+    <img class="img-fluid" src="/img/homepage2.jpg" alt="photo showcasing the variety of dance game arcade machines available at the PGH Dance Game Space" />
+  </p>
+  <p>
+    <img class="img-fluid" src="/img/homepage3.jpg" alt="group of friends smiling and posing for a photo after collectively beating Starfox 64"/>
+  </p>
+
+  <p>
+    The primary goal of <span class="fst-italic">The Space</span> is: <br />
+
+    <span style="display:block; font-size: 150%; margin: 4px 0px 32px">
+      to provide a physical place where each person can
+      socialize, share a meal, and express themselves
+      in a safe and supportive environment.
+    </span>
+  </p>
+
+  <p>
+    Secondary goals include:
+    </p>
+    <ol>
+      <li>providing the local Pittsburgh community a place to play rhythm games</li>
+      <li>providing the broader global dance game community a permanent location equipped to host events</li>
+    </ol>
+  </p>
+
+  <object style="width:100%; height: 500px" data="https://www.youtube.com/embed/7c6lHh8JEsk"></object>
+
+  <h2 id="Staff">Staff</h2>
+  <p>
+    <span class="fst-italic">The Space</span> was founded in fall of 2023,
+    and continues to be managed and actively moderated by
+    <code>quietly-turning</code>, who describes himself as a
+  </p>
+  <ul>
+    <li>lifelong dance gamer</li>
+    <li>former StepMania dev</li>
+    <li>haiku enjoyer</li>
+  </ul>
+
+
+  <h2 id="Special-Thanks">Special Thanks</h2>
+  <p>
+    Many have helped The Space be what it is, but these people deserve special recognition
+    for going above and beyond in contributing their own time, money, and effort:
+  </p>
+  <ul>
+    <li>Mey-Z Daisy</li>
+    <li>SpaghettiSnail</li>
+    <li>Joel</li>
+  </ul>
 </div>`,"/Events":`<div id="events">
   <h1>Events</h1>
 
@@ -353,73 +422,4 @@ Please change the parent <Route path="${k}"> to <Route path="${k==="/"?"*":`${k}
       </div>
     </section>
   </section>
-</div>`,"/":`<div id="home">
-  <h1>
-    PGH Dance Game Space
-  </h1>
-
-  <h2 id="About">About</h2>
-  <p>
-    The PGH Dance Game Space is a Pittsburgh-based community center for dance gamers and
-    dance-game-adjacent folk.
-  </p>
-  <p>
-    We get together twice a week to share freeplay dance games, board games, food, and
-    one another's company.
-  </p>
-
-  <p>
-    <img class="img-fluid" src="/pgh-dance-game-space/img/homepage1.jpg" alt="three people playing dance games at the PGH Dance Game Space" />
-  </p>
-  <p>
-    <img class="img-fluid" src="/pgh-dance-game-space/img/homepage2.jpg" alt="photo showcasing the variety of dance game arcade machines available at the PGH Dance Game Space" />
-  </p>
-  <p>
-    <img class="img-fluid" src="/pgh-dance-game-space/img/homepage3.jpg" alt="group of friends smiling and posing for a photo after collectively beating Starfox 64"/>
-  </p>
-
-  <p>
-    The primary goal of <span class="fst-italic">The Space</span> is: <br />
-
-    <span style="display:block; font-size: 150%; margin: 4px 0px 32px">
-      to provide a physical place where each person can
-      socialize, share a meal, and express themselves
-      in a safe and supportive environment.
-    </span>
-  </p>
-
-  <p>
-    Secondary goals include:
-    </p>
-    <ol>
-      <li>providing the local Pittsburgh community a place to play rhythm games</li>
-      <li>providing the broader global dance game community a permanent location equipped to host events</li>
-    </ol>
-  </p>
-
-  <object style="width:100%; height: 500px" data="https://www.youtube.com/embed/7c6lHh8JEsk"></object>
-
-  <h2 id="Staff">Staff</h2>
-  <p>
-    <span class="fst-italic">The Space</span> was founded in fall of 2023,
-    and continues to be managed and actively moderated by
-    <code>quietly-turning</code>, who describes himself as a
-  </p>
-  <ul>
-    <li>lifelong dance gamer</li>
-    <li>former StepMania dev</li>
-    <li>haiku enjoyer</li>
-  </ul>
-
-
-  <h2 id="Special-Thanks">Special Thanks</h2>
-  <p>
-    Many have helped The Space be what it is, but these people deserve special recognition
-    for going above and beyond in contributing their own time, money, and effort:
-  </p>
-  <ul>
-    <li>Mey-Z Daisy</li>
-    <li>SpaghettiSnail</li>
-    <li>Joel</li>
-  </ul>
 </div>`};function Km(){let u=nr();const g=function(v){if(v.type==="tag"&&v.name==="a"&&v.dataset?.component==="Link")return Ue.jsx(Wf,{to:v.attribs.href,children:v.children[0].data})};return F.useEffect(()=>{window.scrollTo({top:0,left:0,behavior:"instant"})},[u.pathname]),Ue.jsx("div",{children:Ty(Ay[u.pathname],{replace:g})})}function wy(){const u={},g=nr();F.useEffect(()=>{_(),v()},[g.pathname]);function v(){(document.getElementById("navbarNav")?.classList).remove("show")}function f(E){const x=document.getElementById(`${E}Modal`);x.classList.remove("show"),x.style.display="none",x.ariaHidden=!0,x.removeAttribute("aria-modal"),x.removeAttribute("role"),document.body.classList.remove("modal-open"),document.body.style="",Array.from(document.getElementsByClassName("modal-backdrop")).forEach(O=>{O.remove()}),document.getElementById("topbar").style=""}const _=()=>{Array.from(document.getElementsByClassName("tns-slider")).forEach(E=>{const x=E.id.replace("-carousel","");u[x]=sy.tns({container:`#${x}-carousel`,items:1,autoplay:!1,arrowKeys:!0,loop:!1,lazyload:!0,speed:0,nav:!1}),Array.from(document.getElementsByClassName(`${x}-thumbnail`)).forEach(O=>{O.addEventListener("click",y=>{u[x].goTo(parseInt(O.dataset.tnsIndex))})}),Array.from(document.getElementsByClassName("modal-body")).forEach(O=>{O.addEventListener("click",y=>{f(x)})}),Array.from(E.children).forEach(O=>{Array.from(O.getElementsByClassName("tns-lazy-img"))[0].addEventListener("click",y=>{y.stopPropagation();const h=u[x].getInfo();h.index<h.slideCount-1?u[x].goTo("next"):f(x)})})})};return Ue.jsxs("main",{children:[Ue.jsx(oy,{}),Ue.jsx("div",{className:"mt-5",children:Ue.jsx("div",{className:"row no-gutters",children:Ue.jsxs("div",{id:"content-container",className:"d-flex justify-content-center",children:[Ue.jsx("div",{id:"content",className:"col-lg-9 col-12 ps-lg-4 pe-lg-4 ps-md-5 pe-md-5 p-4",children:Ue.jsxs(ug,{children:[Ue.jsx(To,{path:"/",element:Ue.jsx(Km,{})}),Ue.jsx(To,{path:"/:page",element:Ue.jsx(Km,{})})]})}),Ue.jsx(cy,{})]})})})]})}const Oy=ry(wy),Cy=Hp.createRoot(document.body);Cy.render(Ue.jsx(Pv,{children:Ue.jsx(Oy,{})}));
