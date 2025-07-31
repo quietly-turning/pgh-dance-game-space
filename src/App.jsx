@@ -1,5 +1,5 @@
 // ------- components for React
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Route, Routes, useLocation } from "react-router"
 
 // withRouter allows us access to app url history
