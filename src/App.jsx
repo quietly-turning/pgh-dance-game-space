@@ -39,12 +39,16 @@ function App(){
 		topNavbarClasses.remove('show')
   }
 
+  // XXX: this is hacky
+  // TODO: don't use bootstrap's modal
   function hideModal(id){
-    // change properties the modal div
+    // change properties on the modal div
     const modalEl = document.getElementById((`${id}Modal`));
     modalEl.classList.remove('show')
     modalEl.style.display = "none"
     modalEl.ariaHidden = true
+    modalEl.removeAttribute('aria-modal')
+    modalEl.removeAttribute('role')
 
     // remove properties from <body>
     document.body.classList.remove("modal-open")
@@ -54,6 +58,9 @@ function App(){
     Array.from(document.getElementsByClassName("modal-backdrop")).forEach(backdrop=>{
       backdrop.remove()
     })
+
+    // remove styles from topbar
+    document.getElementById('topbar').style = ""
   }
 
 
@@ -80,14 +87,30 @@ function App(){
         })
       })
 
+      // allow the user to close the modal by clicking/tapping anywhere in the modal that isn't an image
+      Array.from(document.getElementsByClassName('modal-body')).forEach(modalBody=>{
+        modalBody.addEventListener("click", e=>{
+          hideModal(id)
+        })
+      })
+
       // allow user to click/tap any fullsize image to progress through the image slider
-      Array.from(sliderEl.children).forEach(fullImg=>{
-        fullImg.addEventListener("click", e=>{
+      Array.from(sliderEl.children).forEach(fullsizeImgContainer=>{
+
+        // add a click event listener to the <img> inside each container div
+        // okay to hardcode [0] since there should only be 1 <img> per container
+        Array.from(fullsizeImgContainer.getElementsByClassName("tns-lazy-img"))[0].addEventListener("click",e=>{
+
+          // don't propagate click event up to parent elements, since parent <div class="modal-body">
+          // has its own click event listener for closing the modal
+          e.stopPropagation()
+
           const info = slider[id].getInfo()
 
           if (info.index < info.slideCount-1){
             // progress to the next img in this slider
             slider[id].goTo("next")
+
           } else{
             // close the modal
             // XXX: can't figure out how to use bootstrap's .hide()
