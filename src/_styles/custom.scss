@@ -37,6 +37,11 @@ h2[id]:target{
 
 a{
 	color: rgb(33, 136, 255);
+
+	&:hover{
+		text-decoration-thickness: 2px;
+		text-underline-offset: 3px;
+	}
 }
 
 // -------------------------------------------------------
@@ -301,7 +306,7 @@ a.joinDiscordBtn{
 
 img.thumbnail{
 	cursor: pointer;
-}	
+}
 
 .tns-controls{
 	text-align: center;
