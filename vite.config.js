@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/pgh-dance-game-space/',
+  // base: '/pgh-dance-game-space/',
 })

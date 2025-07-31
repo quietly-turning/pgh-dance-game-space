@@ -7,7 +7,7 @@ import App from "./App"
 
 const root = ReactDOM.createRoot(document.body);
 root.render(
-	<BrowserRouter basename={'/pgh-dance-game-space/'}>
+	<BrowserRouter>
 		<App />
 	</BrowserRouter>
 );
