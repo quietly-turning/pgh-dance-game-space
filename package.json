@@ -11,9 +11,7 @@
     "html-react-parser": "^5.2.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.5.2",
-    "tiny-slider": "^2.9.4",
-    "tiny-slider-react": "^0.5.7"
+    "react-router": "^7.5.2"
   },
   "scripts": {
     "start": "npm run watch-local-changes | vite",

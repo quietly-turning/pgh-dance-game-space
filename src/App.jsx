@@ -6,9 +6,6 @@ import { Route, Routes, useLocation } from "react-router"
 // and, more importantly here, hook events into url changes
 import { withRouter } from "./withRouter.jsx"
 
-import { tns } from "tiny-slider"
-import 'tiny-slider/dist/tiny-slider.css';
-
 // ------- primary stylesheet
 import "./_styles/custom.css"
 
@@ -24,14 +21,18 @@ import Page   from "./Page"
 
 
 function App(){
-  const slider = {}
-  const location = useLocation();
+
+  const location = useLocation()
 
 	useEffect(() => {
-    // check for presence of image carousels in current page on each url change
     initImgCarousels()
     hideMobileNav()
   }, [location.pathname]);
+
+  const carousel = {}
+  let modalImgIndex = 0
+  let activeImgGroup
+  let modalEl, modalImg, nextBtn, prevBtn, closeBtn
 
 
   function hideMobileNav(){
@@ -39,87 +40,73 @@ function App(){
 		topNavbarClasses.remove('show')
   }
 
-  // XXX: this is hacky
-  // TODO: don't use bootstrap's modal
-  function hideModal(id){
-    // change properties on the modal div
-    const modalEl = document.getElementById((`${id}Modal`));
-    modalEl.classList.remove('show')
+  function hideModal(){
+    activeImgGroup = null
+    modalImgIndex = 0
     modalEl.style.display = "none"
-    modalEl.ariaHidden = true
-    modalEl.removeAttribute('aria-modal')
-    modalEl.removeAttribute('role')
+    modalImg.src = null
+  }
 
-    // remove properties from <body>
-    document.body.classList.remove("modal-open")
-    document.body.style = ""
+  function showModal(groupName, i){
+    activeImgGroup = groupName
+    modalImgIndex = i
+    modalImg.src = carousel[groupName][i]
+    modalEl.style.display = "block"
+  }
 
-    // remove <div class="modal-backdrop"> from DOM
-    Array.from(document.getElementsByClassName("modal-backdrop")).forEach(backdrop=>{
-      backdrop.remove()
-    })
+  const nextImg = () => {
+    modalImgIndex += 1
+    if (modalImgIndex < carousel[activeImgGroup]?.length) {
+      modalImg.src = carousel[activeImgGroup][modalImgIndex]
+    } else {
+      hideModal()
+    }
+  }
 
-    // remove styles from topbar
-    document.getElementById('topbar').style = ""
+  const prevImg = () => {
+    modalImgIndex -= 1
+    if (modalImgIndex >= 0){
+      modalImg.src = carousel[activeImgGroup][modalImgIndex]
+    } else {
+      hideModal()
+    }
+  }
+
+  const kbd = {
+    "Escape":     hideModal,
+    "ArrowLeft":  prevImg,
+    "ArrowRight": nextImg
   }
 
 
   const initImgCarousels = () => {
 
-    Array.from(document.getElementsByClassName("tns-slider")).forEach(sliderEl=>{
-      const id = sliderEl.id.replace("-carousel","")
+    modalEl  = document.getElementById('modal')
+    modalImg = modalEl.getElementsByTagName('img')[0]
+    closeBtn = modalEl.getElementsByClassName('close')[0]
+    nextBtn  = document.getElementById("next-image-link")
+    prevBtn  = document.getElementById("prev-image-link")
 
-      slider[id] = tns({
-        container: `#${id}-carousel`,
-        items: 1,
-        autoplay: false,
-        arrowKeys: true,
-        loop: false,
-        lazyload: true,
-        speed: 0,
-        nav: false,
-      });
+    document.addEventListener("keydown", e=>{
+      kbd[e.key] ? kbd[e.key]() : {}
+    })
 
-      // allow user to click on any thumbnail to open the fullscreen modal to that specific img
-      Array.from(document.getElementsByClassName(`${id}-thumbnail`)).forEach(thumb=>{
-        thumb.addEventListener("click", e=>{
-          slider[id].goTo( parseInt(thumb.dataset.tnsIndex) )
+    nextBtn.addEventListener("click",  e=> nextImg())
+    prevBtn.addEventListener("click",  e=> prevImg())
+    closeBtn.addEventListener("click", e=> hideModal())
+    modalImg.addEventListener("click", e=> nextImg())
+
+    Array.from(document.getElementsByClassName("thumbnailGroup")).forEach(thumbnailGroup=>{
+      const groupname = thumbnailGroup.dataset.groupName
+      const thumbnails = Array.from(thumbnailGroup.getElementsByTagName("img"))
+
+      carousel[groupname] = thumbnails.map(thumbnail => thumbnail.dataset.fullsizeSrc)
+      thumbnails.forEach((thumbnail, i) => {
+        thumbnail.addEventListener("click", e=>{
+          showModal(groupname, i)
         })
       })
-
-      // allow the user to close the modal by clicking/tapping anywhere in the modal that isn't an image
-      Array.from(document.getElementsByClassName('modal-body')).forEach(modalBody=>{
-        modalBody.addEventListener("click", e=>{
-          hideModal(id)
-        })
-      })
-
-      // allow user to click/tap any fullsize image to progress through the image slider
-      Array.from(sliderEl.children).forEach(fullsizeImgContainer=>{
-
-        // add a click event listener to the <img> inside each container div
-        // okay to hardcode [0] since there should only be 1 <img> per container
-        Array.from(fullsizeImgContainer.getElementsByClassName("tns-lazy-img"))[0].addEventListener("click",e=>{
-
-          // don't propagate click event up to parent elements, since parent <div class="modal-body">
-          // has its own click event listener for closing the modal
-          e.stopPropagation()
-
-          const info = slider[id].getInfo()
-
-          if (info.index < info.slideCount-1){
-            // progress to the next img in this slider
-            slider[id].goTo("next")
-
-          } else{
-            // close the modal
-            // XXX: can't figure out how to use bootstrap's .hide()
-            //      so I'm recreating it manually
-            hideModal(id)
-          }
-        })
-      })
-    });
+    })
   }
 
 
@@ -144,6 +131,20 @@ function App(){
         </div>
       </div>
 
+      <div id="modal" style={{"display": "none"}}>
+        <div id="modal-content">
+          <div id="modal-nav">
+            <span></span>
+            <div id="prev-next">
+              <button id="prev-image-link" href="#" aria-label="previous image"> ← </button>
+              <button id="next-image-link" href="#" aria-label="next image"> → </button>
+            </div>
+
+            <button href="#" className="close">x</button>
+          </div>
+          <img id="modal-image" src="null" />
+        </div>
+      </div>
     </main>
   );
 }
