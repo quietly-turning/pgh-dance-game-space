@@ -4,8 +4,8 @@ function ContactPage(){
     <h1>Contact</h1>
 
     <p>
-      The PGH Dance Game Space uses the <code>#meetups-west</code> channel of the
-      <span style={{"fontStyle": "italic"}}>PA Rhythm Gaming Discord</span> server
+      The PGH Dance Game Space uses the <code>#meetups-west</code> channel of
+      the <span style={{"fontStyle": "italic"}}>PA Rhythm Gaming Discord</span> server
       for discussion.
     </p>
     <p>
