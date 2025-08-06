@@ -60,8 +60,8 @@ function HomePage(){
 
       <h2 id="Special-Thanks">Special Thanks</h2>
       <p>
-        Many have helped The Space be what it is, but these people deserve special recognition
-        for going above and beyond in contributing their own time, money, and effort:
+        Many have helped with The Space, but these people have gone above
+        and beyond in contributing their own time, money, and effort:
       </p>
       <ul>
         <li>Mey-Z Daisy</li>
