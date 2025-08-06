@@ -22,7 +22,10 @@ function HomePage(){
         <img className="img-fluid" src="/img/homepage2.jpg" alt="photo showcasing the variety of dance game arcade machines available at the PGH Dance Game Space" />
       </p>
       <p>
-        <img className="img-fluid" src="/img/homepage3.jpg" alt="group of friends smiling and posing for a photo after collectively beating Starfox 64"/>
+        <img className="img-fluid" src="/img/homepage4.jpg" alt="young adults sitting at a long table, playing board games.  the pair in the background considers their game of Go as a third person watches." />
+      </p>
+      <p>
+        <img className="img-fluid" src="/img/homepage3.jpg" alt="group of friends smiling and posing for a photo after collectively beating Starfox 64" />
       </p>
 
       <p>
