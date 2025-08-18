@@ -19,11 +19,12 @@ function EventsPage(){
 
   const upcomingEvents = [
     {
-      name: "Staminacon 2",
+      name: "Stamina Con 2",
       date: "Oct 31 – Nov 2, 2025",
-      desc: [`Staminacon returns this fall!   Check the
+      desc: [`Stamina Con returns this fall!   Check the
         <a href="https://staminanation.com/">Stamina Nation Discord server</a>
         for more details.`],
+      logo: 'Stamina-Con-2-logo.png'
     },
   ]
 
@@ -82,7 +83,6 @@ function EventsPage(){
     setImgIndex(i)
     setFilenames(thumbs)
     setModalVisible(true)
-
   }
 
   function hideModal(){
@@ -108,6 +108,10 @@ function EventsPage(){
           details.desc.map((paragraph, j) => {
             return <p key={j} dangerouslySetInnerHTML={{__html: paragraph}} />
           })
+        }
+
+        {
+          details.logo ? <img className='img-fluid' src={`/img/events/${hyphenatedName}/${details.logo}`} /> : null
         }
 
         <div className="row gy-4 thumbnailGroup" data-group-name={hyphenatedName}>
