@@ -15,8 +15,9 @@ import TableOfContents from "./_layout/TableOfContents"
 
 // ------- components for pages
 import HomePage    from "./Pages/Home.jsx"
-import ContactPage from "./Pages/Contact.jsx"
 import EventsPage  from "./Pages/Events.jsx"
+import NewsPage    from "./Pages/News.jsx"
+import ContactPage from "./Pages/Contact.jsx"
 
 // -----------------------------------
 
@@ -51,6 +52,7 @@ function App(){
               <Routes>
                 <Route path="/"        element={<HomePage />} />
                 <Route path="/Events"  element={<EventsPage />} />
+                <Route path="/News"    element={<NewsPage />} />
                 <Route path="/Contact" element={<ContactPage />} />
               </Routes>
             </div>
