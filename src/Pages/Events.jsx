@@ -26,6 +26,15 @@ function EventsPage(){
         for more details.`],
       logo: 'Stamina-Con-2-logo.png'
     },
+    {
+      name: "L.E.F.T.S.",
+      date: "Jan 17 – Jan 18, 2026",
+      desc: [`LEFTS is a casual, inclusive event that maximizes everyone's
+        participation regardless of skill level.   Check the
+        <a href="https://staminanation.com/">event website</a>
+        for more details.`],
+      logo: 'lefts-logo.jpg'
+    },
   ]
 
   const pastEvents = [
@@ -111,7 +120,7 @@ function EventsPage(){
         }
 
         {
-          details.logo ? <img className='img-fluid' src={`/img/events/${hyphenatedName}/${details.logo}`} /> : null
+          details.logo ? <img className='img-fluid py-4' src={`/img/events/${hyphenatedName}/${details.logo}`} /> : null
         }
 
         <div className="row gy-4 thumbnailGroup" data-group-name={hyphenatedName}>
