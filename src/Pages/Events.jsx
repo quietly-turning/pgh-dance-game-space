@@ -24,7 +24,7 @@ function EventsPage(){
       desc: [`Stamina Con returns this fall!   Check the
         <a href="https://staminanation.com/">Stamina Nation Discord server</a>
         for more details.`],
-      logo: 'Stamina-Con-2-logo.png'
+      logo: 'Stamina-Con-2-logo.jpg'
     },
     {
       name: "L.E.F.T.S.",
