@@ -31,7 +31,7 @@ function EventsPage(){
       date: "Jan 17 – Jan 18, 2026",
       desc: [`LEFTS is a casual, inclusive event that maximizes everyone's
         participation regardless of skill level.   Check the
-        <a href="https://staminanation.com/">event website</a>
+        <a href="https://lefts.groovestats.com/">event website</a>
         for more details.`],
       logo: 'lefts-logo.jpg'
     },
