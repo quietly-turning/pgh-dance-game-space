@@ -56,7 +56,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
         <a href="https://staminanation.com/">Stamina Nation Discord server</a>
         for more details.`],logo:"Stamina-Con-2-logo.jpg"},{name:"L.E.F.T.S.",date:"Jan 17 – Jan 18, 2026",desc:[`LEFTS is a casual, inclusive event that maximizes everyone's
         participation regardless of skill level.   Check the
-        <a href="https://staminanation.com/">event website</a>
+        <a href="https://lefts.groovestats.com/">event website</a>
         for more details.`],logo:"lefts-logo.jpg"}],z=[{name:"Girlpocalypse 2025 Retreat",date:"June 28–29, 2025",desc:[`The retreat was an in-person gathering that brought together competitors
             and friends of those who participated in
             <a href="https://www.girlpocalypse.dance/">Girlpocalypse</a> —
