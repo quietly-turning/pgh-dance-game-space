@@ -19,14 +19,6 @@ function EventsPage(){
 
   const upcomingEvents = [
     {
-      name: "Stamina Con 2",
-      date: "Oct 31 – Nov 2, 2025",
-      desc: [`Stamina Con returns this fall!   Check the
-        <a href="https://staminanation.com/">Stamina Nation Discord server</a>
-        for more details.`],
-      logo: 'Stamina-Con-2-logo.jpg'
-    },
-    {
       name: "L.E.F.T.S.",
       date: "Jan 17 – Jan 18, 2026",
       desc: [`LEFTS is a casual, inclusive event that maximizes everyone's
@@ -38,6 +30,13 @@ function EventsPage(){
   ]
 
   const pastEvents = [
+    {
+      name: "Stamina Con 2",
+      date: "Oct 31 – Nov 2, 2025",
+      desc: [`Stamina Nation gathered on Halloween weekend for a stamina event
+        that included a costume contest, pumpkin search, and a rave!`],
+      logo: 'Stamina-Con-2-logo.jpg'
+    },
     {
       name: "Girlpocalypse 2025 Retreat",
       date: "June 28–29, 2025",
