@@ -33,9 +33,11 @@ function EventsPage(){
     {
       name: "Stamina Con 2",
       date: "Oct 31 – Nov 2, 2025",
-      desc: [`Stamina Nation gathered on Halloween weekend for a stamina event
+      desc: [`Stamina Nation gathered on Halloween weekend for a <a target="_blank" href="https://staminacon2.groovestats.com/">stamina event</a>
         that included a costume contest, pumpkin search, and a rave!`],
-      logo: 'Stamina-Con-2-logo.jpg'
+      thumbs: [
+      	"sc2-1.jpg", "sc2-2.jpg", "sc2-3.jpg", "sc2-4.jpg", "sc2-5.jpg", "sc2-6.jpg", "sc2-7.jpg", "sc2-8.jpg", "sc2-9.jpg"
+      ]
     },
     {
       name: "Girlpocalypse 2025 Retreat",
