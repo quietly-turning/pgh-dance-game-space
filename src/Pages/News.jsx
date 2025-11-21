@@ -1,4 +1,4 @@
-function HomePage(){
+function NewsPage(){
   return (
     <div id="news">
       <h1>
@@ -37,4 +37,4 @@ function HomePage(){
   )
 }
 
-export default HomePage
+export default NewsPage
