@@ -28,7 +28,7 @@ function HomePage(){
         <img className="img-fluid" src="/img/homepage3.jpg" alt="group of friends smiling and posing for a photo after collectively beating Starfox 64" />
       </p>
 
-      <p>
+      <p id="mission-statement">
         The primary goal of <span className="fst-italic">The Space</span> is: <br />
 
         <span style={{"display":"block", "fontSize": "150%", "margin": "4px 0px 32px"}}>
